@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>収支登録</title>
+</head>
+<body>
+    <h2>収支登録</h2>
+    <form action="../controller/create.php" method="POST">
+        <p>日付</p>
+        <input type="date" name="date">
+        <p>収支：</p>
+          <input type="radio" name="type" value="0">支出
+          <input type="radio" name="type" value="1">収入
+        <br>
+        <p>品目：</p>
+          <input type="text" name="title">
+        <br>
+        <p>金額：</p>
+          <input type="number" name="amount">
+        <br>
+        <p>メモ：</p>
+        <textarea name="memo" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="登録する">
+    </form>
+</body>
+</html>
