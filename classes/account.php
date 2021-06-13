@@ -60,5 +60,30 @@
       }
       return $result;
     }
+
+    public function accountUpdate($accounts) {
+      $sql = "UPDATE account SET
+              date = :date, type = :type, title = :title, amount = :amount, memo = :memo
+            WHERE
+              id = :id";
+
+    $dbh = connect();
+    $dbh->beginTransaction();
+    try {
+      $stmt = $dbh->prepare($sql);
+      $stmt->bindValue(':date', $accounts['date'], PDO::PARAM_STR);
+      $stmt->bindValue(':type', $accounts['type'], PDO::PARAM_INT);
+      $stmt->bindValue(':title', $accounts['title'], PDO::PARAM_STR);
+      $stmt->bindValue(':amount', $accounts['amount'], PDO::PARAM_INT);
+      $stmt->bindValue(':memo', $accounts['memo'], PDO::PARAM_STR);
+      $stmt->bindValue(':id', $accounts['id'], PDO::PARAM_INT);
+      $stmt->execute();
+      $dbh->commit();
+      echo '更新しました';
+      } catch(PDOException $e) {
+          $dbh->rollBack();
+        exit($e);
+      }
+    }
   }
 ?>
