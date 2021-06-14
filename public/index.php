@@ -42,7 +42,7 @@
           <td><?php echo h(date('Y/m/d', strtotime($column['created_at']))) ?></td>
           <td><a href="../controller/detail.php?id=<?php echo $column['id'] ?>">詳細</a></td>
           <td><a href="../public/update_form.php?id=<?php echo $column['id'] ?>">編集</a></td>
-          <td><a href="#">削除</a></td>
+          <td><a href="../controller/delete.php?id=<?php echo $column['id'] ?>">削除</a></td>
         </tr>
       <?php endforeach; ?>
     </table>
